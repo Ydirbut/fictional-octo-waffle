@@ -23,7 +23,6 @@ func on_select_building (buildingType):
 	curPlacingBuilding = true
 	buildingToPlace = buildingType
 	map.highlight_available_tiles()
-	breakpoint
 func add_to_resource_per_turn (resource, amount):
 	if resource == 0:
 		return

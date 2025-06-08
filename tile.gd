@@ -24,9 +24,11 @@ func place_building(buildingTexture):
 	buildingIcon.texture = buildingTexture
 
 
-func _on_Tile_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	print("Tile clicked:", self, "canPlaceBuilding:", canPlaceBuilding)
 	if event is InputEventMouseButton and event.pressed:
 		var gameManager = get_node("/root/MainScene")
 	   # if we can place a building down on this tile, then do so
-		if gameManager.currentlyPlacingBuilding and canPlaceBuilding:
+
+		if gameManager.curPlacingBuilding  and canPlaceBuilding:
 			gameManager.place_building(self)
