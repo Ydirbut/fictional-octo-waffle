@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg2w0c3y025g4"]
+
+[ext_resource type="Texture2D" uid="uid://b3p1wmk6ivva3" path="res://GodotStrategy-Assets/Sprites/Mine.png" id="1_27fn8"]
+[ext_resource type="Script" uid="uid://8kyghsv3xg6c" path="res://UI.gd" id="1_nltto"]
+[ext_resource type="Texture2D" uid="uid://c86k4s5iq43a7" path="res://GodotStrategy-Assets/Sprites/Greenhouse.png" id="2_nltto"]
+[ext_resource type="Texture2D" uid="uid://clrvj0v80jr6q" path="res://GodotStrategy-Assets/Sprites/SolarPanel.png" id="3_ibotj"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nltto")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 144.0
+color = Color(0.377919, 0.377919, 0.377919, 1)
+
+[node name="EndTurnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1046.0
+offset_top = 34.0
+offset_right = 1246.0
+offset_bottom = 109.0
+text = "End Turn"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 878.0
+offset_top = 56.0
+offset_right = 1021.0
+offset_bottom = 92.0
+text = "Turn 257"
+
+[node name="BuildingButtons" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 270.0
+offset_bottom = 109.0
+alignment = 1
+
+[node name="MineButton" type="Button" parent="BuildingButtons"]
+layout_mode = 2
+icon = ExtResource("1_27fn8")
+
+[node name="GreenhouseButton" type="Button" parent="BuildingButtons"]
+layout_mode = 2
+icon = ExtResource("2_nltto")
+
+[node name="SolarPanelButton" type="Button" parent="BuildingButtons"]
+layout_mode = 2
+icon = ExtResource("3_ibotj")
+
+[node name="HeaderFoodMetal" type="Label" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 32.0
+offset_right = 426.0
+offset_bottom = 107.0
+text = "Food:
+Metal:"
+
+[node name="FoodMetalText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 32.0
+offset_right = 478.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+text = "25 (+80)
+25 (+80)"
+
+[node name="HeaderOxygenEnergy" type="Label" parent="."]
+layout_mode = 0
+offset_left = 505.0
+offset_top = 31.0
+offset_right = 563.0
+offset_bottom = 106.0
+text = "Oxygen:
+Energy:"
+
+[node name="OxygenEnergyText" type="Label" parent="."]
+layout_mode = 0
+offset_left = 574.0
+offset_top = 31.0
+offset_right = 635.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(0.623529, 0, 0, 1)
+text = "25 (+80)
+25 (+80)"
+
+[connection signal="pressed" from="EndTurnButton" to="." method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="BuildingButtons/MineButton" to="." method="_on_mine_button_pressed"]
+[connection signal="pressed" from="BuildingButtons/GreenhouseButton" to="." method="_on_greenhouse_button_pressed"]
+[connection signal="pressed" from="BuildingButtons/SolarPanelButton" to="." method="_on_solar_panel_button_pressed"]
