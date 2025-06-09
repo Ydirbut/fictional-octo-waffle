@@ -1,27 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://n3xntck0qbq2"]
+[gd_scene load_steps=4 format=3 uid="uid://n3xntck0qbq2"]
 
 [ext_resource type="Script" uid="uid://3okuqrbmymuw" path="res://tile.gd" id="1_a2t34"]
 [ext_resource type="Texture2D" uid="uid://qoygt62jyjms" path="res://GodotStrategy-Assets/Sprites/Ground.png" id="1_vx4y2"]
 [ext_resource type="Texture2D" uid="uid://b2d7k1p8abgwf" path="res://GodotStrategy-Assets/Sprites/TileHighlight.png" id="2_a2t34"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfor0"]
-
 [node name="Tile" type="Area2D"]
 script = ExtResource("1_a2t34")
 
-[node name="Ground" type="Sprite2D" parent="."]
+[node name="Ground" type="Polygon2D" parent="."]
 texture = ExtResource("1_vx4y2")
+texture_offset = Vector2(32, 32)
+polygon = PackedVector2Array(0, 32, 28, 16, 28, -16, 0, -32, -28, -16, -28, 16)
+uv = PackedVector2Array(-133.791, 19.5048)
 
-[node name="Highlight" type="Sprite2D" parent="."]
+[node name="Highlight" type="Polygon2D" parent="."]
 visible = false
-scale = Vector2(6.4, 6.4)
 texture = ExtResource("2_a2t34")
+polygon = PackedVector2Array(0, 32, 28, 16, 28, -16, 0, -32, -28, -16, -28, 16)
+uv = PackedVector2Array(64, 32, 48, 59, 16, 59, 0, 32, 16, 5, 48, 5)
 
 [node name="BuildingIcon" type="Sprite2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 visible = false
-scale = Vector2(3.1, 3.1)
-shape = SubResource("RectangleShape2D_tfor0")
+polygon = PackedVector2Array(0, 32, -28, 16, -28, -16, 0, -32, 28, -16, 28, 16)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
