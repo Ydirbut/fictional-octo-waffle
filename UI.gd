@@ -47,3 +47,6 @@ func _on_solar_panel_button_pressed() -> void:
 func _on_end_turn_button_pressed() -> void:
 	gameManager.end_turn()
 	on_end_turn()
+	
+func cancel_placing_building() ->void:
+	buildingButtons.visible = true

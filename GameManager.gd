@@ -24,6 +24,11 @@ func on_select_building (buildingType):
 	buildingToPlace = buildingType
 	map.highlight_available_tiles()
 	
+func cancel_placing_building ():
+	curPlacingBuilding = false
+	ui.cancel_placing_building()
+	map.disable_tile_highlights()
+	
 func add_to_resource_per_turn (resource, amount):
 	if resource == 0:
 		return

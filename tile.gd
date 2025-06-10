@@ -29,9 +29,11 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	if event is InputEventMouseButton and event.pressed:
 		var gameManager = get_node("/root/MainScene")
 	   # if we can place a building down on this tile, then do so
-		print(gameManager.curPlacingBuilding)
-		print(canPlaceBuilding)
-		if gameManager.curPlacingBuilding and canPlaceBuilding:
-			gameManager.place_building(self)
-		else:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if gameManager.curPlacingBuilding and canPlaceBuilding:
+				gameManager.place_building(self)
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
 			print(get_viewport().get_mouse_position())
+			print(self.name)
+			if gameManager.curPlacingBuilding:
+				gameManager.cancel_placing_building()
