@@ -2,7 +2,7 @@ extends Node
 
 var allTiles : Array
 
-var tilesWithBuildings : Array
+var tilesWithBuildings :Array
 
 var tileSize : float = 64.0
 
@@ -90,7 +90,7 @@ func place_building(tile, texture):
 func _ready():
 	var xStart : int = round(randf_range(2,mapWidth -2))
 	var yStart : int = round(randf_range(2,mapHeight-2))
-	for x in range(0,mapWidth):
+	'for x in range(0,mapWidth):
 		for y in range(0,mapHeight):
 			var newTile = tile.instantiate()
 			var xPos : int = 0
@@ -107,7 +107,7 @@ func _ready():
 			add_child(newTile)
 			
 			if x == xStart and y == yStart:
-				place_building(newTile,BuildingData.base.iconTexture)
+				place_building(newTile,BuildingData.base.iconTexture)'
 	
 	
 	allTiles = get_tree().get_nodes_in_group("Tiles")

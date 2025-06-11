@@ -10,6 +10,8 @@ extends Control
 
 @onready var gameManager : Node = get_node("/root/MainScene")
 
+@onready var hexMap : Node = get_node("/root/MainScene/HexMap")
+
 func on_end_turn():
 	curTurnText.text = "Turn: " + str(gameManager.curTurn)
 	buildingButtons.visible = true
@@ -50,3 +52,11 @@ func _on_end_turn_button_pressed() -> void:
 	
 func cancel_placing_building() ->void:
 	buildingButtons.visible = true
+
+'func _unhandled_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var local_pos = hexMap.to_local(event.position)
+		var cell = hexMap.local_to_map(local_pos)
+		var tile_id = hexMap.get_cell(0, cell)
+		if tile_id != hexMap.INVALID_CELL:
+			print("Clicked on hex tile at map coords:", cell)'

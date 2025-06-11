@@ -102,8 +102,9 @@ func _pathfinding_does_tile_connect(tile: Vector2i, neighbor: Vector2i) -> bool:
 
 
 func _unhandled_input(event: InputEvent):
-	if is_visible_in_tree() and event is InputEventMouseMotion:
+	if is_visible_in_tree() and event.is_action_pressed("mouse_select"):
 		var cell_under_mouse = get_closest_cell_from_mouse()
 		if cell_under_mouse.distance_squared_to(hovering_tile) != 0:
 			hovering_tile = cell_under_mouse
 			hovering_changed.emit()
+			print("Clicked on hex tile at map coords:", cell_under_mouse)
